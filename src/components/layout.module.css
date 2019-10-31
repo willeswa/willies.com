@@ -1,25 +1,93 @@
 .navItem {
-    display: inline-block;
-    font-size: 0.9em;
-    padding: 10px 20px;
+  display: inline-block;
+  font-size: 0.9em;
+  padding: 10px 20px;
 }
 
-.container {    
-    margin: 0 auto;
-    width: 70%;
+.container {
+  margin: 0 auto;
+  padding: 0 auto;
+  width: 80%;
 }
 
 header {
-    width: 100%;
+  width: 100%;
 }
 
 .navbar {
-    margin: 0 auto;
-    text-align: center;
+  margin: 0 auto;
+  text-align: center;
 }
 
-*{
-    color: #313a6a;
+* {
+  color: #313a6a;
+  font-weight: bold;
+}
+
+.cards {
+  width: 90%;
+  margin: 0 15%;
+}
+
+.card {
+  width: 40%;
+  border-radius: 0 0 20px 20px;
+  margin: 1%;
+  display: inline-block;
+  -webkit-box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 1);
+}
+
+.upperCard {
+  background-color: #ffffff;
+  padding: 10px 15px;
+}
+
+.lowerCard {
+  padding: 10px 15px;
+  width: 100%;
+  background-color: #f7f7f7;
+  border-radius: 0 0 15px 15px;
+}
+
+.thought {
+  width: 30%;
+  display: inline-block;
+  border: #313a6a dashed 1px;
+  margin: 1%;
+  font-size: 0.8em;
+  font-weight: 300;
+  padding: 5px;
+  border-radius: 15px 0 15px 0;
+}
+
+.postTags span {
+    color: #D9DADD;
+    font-size: 0.9em;
     font-weight: bold;
 }
 
+.postTags span:last-child {
+  float: right;
+}
+
+.cardsHolder p {
+    color: #4E69B9;
+    padding: 30px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 80%;
+  }
+
+  .cards {
+      width: 100%;
+      margin: 0;
+  }
+
+  .card {
+      width: 100%;
+  }
+}

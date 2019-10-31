@@ -2,8 +2,9 @@
     width: 60%;
     margin: 0 auto;
     text-align: center;
-    font-size: 0.8em;
-    font-weight: bold;
+    font-size: 0.9em;
+    font-weight: 200;
+    padding: 10px;
 }
 
 .aboutron h3 {
@@ -11,8 +12,21 @@
     margin: 2%;
 }
 
+.postsHeader {
+    padding: 0 16%;
+    color: #4e69b9;
+}
+
 @media only screen and (max-width: 600px) {
     .aboutron {
         width: 90%;
+    }
+
+    .aboutron p {
+        text-align: justify;
+    }
+
+    .postsHeader {
+        padding: 0 2%;
     }
 }
