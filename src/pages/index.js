@@ -9,7 +9,10 @@ export default () => (
     <Layout>
         <div className={layout.aboutron}>
             <h3>About</h3>
-            <p>Hi. My name is Willies Wanjala. I am a software developer based in Nairobi Kenya.</p>
+            <p>Hi. My name is Willies Wanjala. I am a software developer based in Nairobi Kenya.
+                This is a repository of my thoughts, works, beliefs and 
+                a catalogue of my socially sharable daily habits.
+            </p>
         </div>
     </Layout>
 )

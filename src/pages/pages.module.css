@@ -1,8 +1,9 @@
 .aboutron {
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
     text-align: center;
     font-size: 0.8em;
+    font-weight: bold;
 }
 
 .aboutron h3 {
