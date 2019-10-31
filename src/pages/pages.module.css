@@ -1,0 +1,11 @@
+.aboutron {
+    width: 40%;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.8em;
+}
+
+.aboutron h3 {
+    font-size: 1.1em;
+    margin: 2%;
+}

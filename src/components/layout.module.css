@@ -1,0 +1,20 @@
+.navItem {
+    display: inline-block;
+    font-size: 0.8em;
+    padding: 10px 20px;
+}
+
+.container {
+    margin: 0 auto;
+    width: 70%;
+}
+
+header {
+    width: 100%;
+}
+
+.navbar {
+    margin: 0 auto;
+    text-align: center;
+}
+
