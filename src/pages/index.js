@@ -8,7 +8,6 @@ import layout from "./pages.module.css"
 export default () => (
   <Layout>
     <div className={layout.aboutron}>
-      <img src="./images/prof.jpg" alt="profile pic" />
       <p>
         Hi. My name is Willies Wanjala. I am a software developer based in
         Nairobi Kenya. This is a repository of my thoughts, works, beliefs and a
@@ -20,30 +19,19 @@ export default () => (
       <Cards
         posts={[
           {
-            title: "First Blog and Why?",
+            title: "Here is my First Blog and Why I Started Writing Blog Posts.",
             publishedOn: "01/11/2019",
-            link: "https://wilies.com/thispost",
+            link: "/thispost",
             tag: "habits",
-            thoughts: [{ text: "second thouht" }, { text: "second thouht" }],
-          },
-          {
-            title: "First Blog and Why?",
-            publishedOn: "01/11/2019",
-            link: "https://wilies.com/thispost",
-            tag: "philosophy",
-            thoughts: [{ text: "second thouht" }, { text: "second thouht" }],
-          },
-          {
-            title: "First Blog and Why?",
-            publishedOn: "01/11/2019",
-            link: "https://wilies.com/thispost",
-            tag: "religion",
-            thoughts: [{ text: "second thouht" }, { text: "second thouht" }],
+            thoughts: [
+              { text: "Help document my thoughts & ideas" },
+              { text: "To share my knowledge and perspective" },
+              { text: "To learn to communicate" }
+            ],
           },
         ]}
       />
-      <Button
-      text="all posts >>"/>
+      <Button text="all posts >>" />
     </div>
   </Layout>
 )

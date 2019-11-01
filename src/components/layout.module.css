@@ -52,7 +52,7 @@ header {
 }
 
 .thought {
-  width: 30%;
+  width: 47%;
   display: inline-block;
   border: #313a6a dashed 1px;
   margin: 1%;
@@ -64,7 +64,7 @@ header {
 
 .postTags span {
     color: #D9DADD;
-    font-size: 0.9em;
+    font-size: 0.8em;
     font-weight: bold   ;
 }
 
@@ -89,6 +89,8 @@ header {
 footer {
     padding: 10px 55px;
     font-size: 0.8em;
+    font-style: italic;
+    opacity: 0.5;
 }
 footer *{
     font-weight: 100;

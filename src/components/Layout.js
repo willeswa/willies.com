@@ -29,7 +29,7 @@ export default ({children}) => (
             {children}
         </main>
         <footer>
-            <p>design inspired by: <a href="https://deepstash.com/">deepdash.com</a></p>
+            <p>Design inspired by: <a href="https://deepstash.com/">deepstash.com</a></p>
         </footer>
     </div>
 )
