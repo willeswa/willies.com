@@ -18,13 +18,13 @@ const SpecialLink = props => (
 
 export default ({children}) => (
     <div>
-        <header>
+        {/* <header>
             <ul className={layout.navbar}>
                 <ListLink to='/'>Home</ListLink>
                 <ListLink to='/blogs'>Blogs</ListLink>
                 <SpecialLink email='mailto:gwiliez@gmail.com?'>Contact Me</SpecialLink>
             </ul>
-        </header>
+        </header> */}
         <main  className={layout.container}>    
             {children}
         </main>
