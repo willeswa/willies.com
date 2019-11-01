@@ -12,6 +12,9 @@
 
 header {
   width: 100%;
+  background-color: #E7E4E1;
+  padding: 15px 0 0px 0;
+  margin-bottom: 2%;
 }
 
 .navbar {
@@ -118,7 +121,7 @@ footer p {
   }
 
   .button {
-      margin-left: 62%;
+      margin-left: 68%;
       margin-top: 5%;
   }
 
