@@ -90,6 +90,7 @@ header {
     border: none;
 }
 
+
 footer {
     padding: 10px 55px;
     font-size: 0.8em;
@@ -102,6 +103,7 @@ footer *{
 footer p {
     margin-top: 2%;
     color: #999999;
+    text-align: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -138,9 +140,8 @@ footer p {
       margin: 1%;
   }
 
-  footer {
+  footer p{
       padding: 0;
-      text-align: center;
-      margin-top: 30%;
+      margin-top: 20%;
   }
 }
