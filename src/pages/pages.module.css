@@ -14,7 +14,8 @@
 
 .postsHeader {
     padding: 0 16%;
-    color: #4e69b9;
+    margin-bottom: 1%;
+    font-weight: normal;
 }
 
 @media only screen and (max-width: 600px) {

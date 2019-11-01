@@ -15,9 +15,20 @@ export default () => (
       </p>
     </div>
     <div>
-      <h4 className={layout.postsHeader}>RECENT POSTS</h4>
+      <h4 className={layout.postsHeader}>Recent Posts</h4>
       <Cards
         posts={[
+          {
+            title: "Here is my First Blog and Why I Started Writing Blog Posts.",
+            publishedOn: "01/11/2019",
+            link: "/thispost",
+            tag: "habits",
+            thoughts: [
+              { text: "Help document my thoughts & ideas" },
+              { text: "To share my knowledge and perspective" },
+              { text: "To learn to communicate" }
+            ],
+          },
           {
             title: "Here is my First Blog and Why I Started Writing Blog Posts.",
             publishedOn: "01/11/2019",
