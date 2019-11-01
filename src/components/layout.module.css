@@ -49,11 +49,12 @@ header {
   width: 100%;
   background-color: #f7f7f7;
   border-radius: 0 0 15px 15px;
+  display: flex;
+      flex-wrap: wrap;
 }
 
 .thought {
   width: 47%;
-  display: inline-block;
   border: #313a6a dashed 1px;
   margin: 1%;
   font-size: 0.8em;
@@ -101,8 +102,14 @@ footer p {
 }
 
 @media only screen and (max-width: 600px) {
+    * {
+        margin: 0;
+        padding: 0;
+    }
   .container {
-    width: 80%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
 
   .cards {
@@ -116,8 +123,16 @@ footer p {
   }
 
   .card {
-      width: 100%;
+      width: 96%;
       margin: 2%;
+  }
+
+  .thought {
+      font-size: 0.6em;
+      font-weight: bold;
+      width: 31%;
+      height: 50px;
+      margin: 1%;
   }
 
   footer {
