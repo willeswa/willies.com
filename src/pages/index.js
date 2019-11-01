@@ -2,6 +2,7 @@ import React from "react"
 
 import Layout from "../components/Layout"
 import Cards from "../components/card"
+import Button from "../components/button"
 import layout from "./pages.module.css"
 
 export default () => (
@@ -41,7 +42,8 @@ export default () => (
           },
         ]}
       />
-      <a href='/blogs/'>ALL POSTS >></a>
+      <Button
+      text="all posts >>"/>
     </div>
   </Layout>
 )

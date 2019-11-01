@@ -65,7 +65,7 @@ header {
 .postTags span {
     color: #D9DADD;
     font-size: 0.9em;
-    font-weight: bold;
+    font-weight: bold   ;
 }
 
 .postTags span:last-child {
@@ -75,6 +75,27 @@ header {
 .cardsHolder p {
     color: #4E69B9;
     padding: 30px;
+}
+
+.button {
+    padding: 5px 10px;
+    font-size: 0.8em;
+    margin-left: 80%;
+    cursor: pointer;
+    text-transform: uppercase;;
+    border: none;
+}
+
+footer {
+    padding: 10px 55px;
+    font-size: 0.8em;
+}
+footer *{
+    font-weight: 100;
+}
+footer p {
+    margin-top: 2%;
+    color: #999999;
 }
 
 @media only screen and (max-width: 600px) {
@@ -87,7 +108,17 @@ header {
       margin: 0;
   }
 
+  .button {
+      margin-left: 62%;
+      margin-top: 5%;
+  }
+
   .card {
       width: 100%;
+      margin: 2%;
+  }
+
+  footer {
+      padding: 0;
   }
 }

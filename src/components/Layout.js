@@ -17,7 +17,7 @@ const SpecialLink = props => (
 
 
 export default ({children}) => (
-    <div>
+    <div className={layout.container}>
         <header>
             <ul className={layout.navbar}>
                 <ListLink to='/'>Home</ListLink>
@@ -25,7 +25,7 @@ export default ({children}) => (
                 <SpecialLink email='mailto:gwiliez@gmail.com?'>Contact Me</SpecialLink>
             </ul>
         </header>
-        <main className={layout.container}>
+        <main>
             {children}
         </main>
         <footer>
