@@ -68,8 +68,10 @@ header {
 
 .postTags span {
     color: #D9DADD;
-    font-size: 0.8em;
-    font-weight: bold   ;
+    font-size: 0.7em;
+    font-weight: bold;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: normal;
 }
 
 .postTags span:last-child {

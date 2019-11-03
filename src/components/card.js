@@ -1,29 +1,30 @@
 import React from "react"
 import layout from "./layout.module.css"
 
-const Thought = props => <p className={layout.thought}>{props.text}</p>
+const Thought = ({text}) => <p className={layout.thought}>{text}</p>
 
-const Post = props => (
-  <a href={props.link} className={layout.card}>
+const Post = ({link, title, publishedOn, tag, thoughts}) => (
+  <a href={link} className={layout.card}>
     <div className={layout.upperCard}>
-      <h4>{props.title}</h4>
+      <h4>{title}</h4>
       <div className={layout.postTags}>
-        <span>{props.publishedOn}</span>
-        <span>{props.tag}</span>
+        <span>{publishedOn}</span>
+        <span>{tag}</span>
       </div>
     </div>
     <div className={layout.lowerCard}>
-      {props.thoughts.map(thought => (
-        <Thought text={thought.text} />
+      {thoughts.map(thought => (
+        <Thought key={thoughts.indexOf(thought)} text={thought.text} />
       ))}
     </div>
   </a>
 )
 
-export default props => (
+export default ({posts}) => (
     <div className={layout.cards}>
-      {props.posts.map(post => (
+      {posts.map(post => (
         <Post
+          key={posts.indexOf(post)}
           link={post.link}
           title={post.title}
           publishedOn={post.publishedOn}

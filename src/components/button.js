@@ -1,10 +1,10 @@
 import React from 'react';
 import layout from './layout.module.css';
 
-export default props => (
-    <a href={props.link}>
+export default ({link, text}) => (
+    <a href={link}>
         <button className={layout.button}>
-            {props.text}
+            {text}
         </button>
     </a>
 )
