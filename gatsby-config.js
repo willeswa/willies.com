@@ -9,7 +9,10 @@ module.exports = {
   siteMetadata: {
     title: `wanjala`,
     description: `The software engineer from Kibra`,
-    author: `Willies Wanjala`
+    author: `Willies Wanjala`,
+    linkedin: `https://www.linkedin.com/in/godfrey-wanjala-14601a73/`,
+    github: `https://github.com/willeswa`,
+    twitter: `https://twitter.com/wanjalake`
   },
   plugins: [
     {
@@ -26,6 +29,14 @@ module.exports = {
         icon: `src/images/icon.png`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
+    `gatsby-transformer-remark`,
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
   ],
