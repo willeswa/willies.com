@@ -1,10 +1,8 @@
-import React from 'react';
-import layout from './layout.module.css';
+import React from "react"
+import layout from "./layout.module.css"
 
-export default ({link, text}) => (
-    <a href={link}>
-        <button className={layout.button}>
-            {text}
-        </button>
-    </a>
+export default ({ link, text }) => (
+  <a href={link} className={layout.button}>
+    {text}
+  </a>
 )

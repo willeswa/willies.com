@@ -1,69 +1,41 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout"
-import Cards from "../components/card"
+import Card from "../components/card"
 import Button from "../components/button"
-import layout from "./pages.module.css"
+import pagecss from "./pages.module.css"
+import layout from "../components/layout.module.css"
 
-export default ({data}) => (
+export default ({ data }) => (
   <Layout>
-    <div className={layout.social}>
-      <span>
-        <a
-          href={data.site.siteMetadata.linkedin}
-          target="_blank"
-          rel="noopener noreferrer"
-          className={layout.linkedin}
-        >
-          linkedin
-        </a>
-      </span>
-      <span>
-        <a href={data.site.siteMetadata.github} target="_blank" rel="noopener noreferrer" className={layout.github}>
-          github
-        </a>
-      </span>
-      <span>
-        <a href={data.site.siteMetadata.twitter} target="_blank" rel="noopener noreferrer" className={layout.twitter}>
-          twitter
-        </a>
-      </span>
-    </div>
-    <div>
-      <h4 className={layout.postsHeader}>Recent Posts</h4>
-      
-        {data.allMarkdownRemark.edges.map(({node}, index) => (
-           <Cards
-           key={index}
-           post={node.frontmatter}
-         />
+    <div className={layout.container}>
+      <h4 className={pagecss.postsHeader}>Recent Posts</h4>
+
+      <div className={layout.cards}>
+        {data.allMarkdownRemark.edges.slice(0, 4).map(({ node }, index) => (
+          <div className={layout.column}>
+            <Card key={index} card={node.frontmatter} />
+          </div>
         ))}
-    
-      <Button text="all posts >>" />
+      </div>
+      <Button text="all posts >>" link="/blogs" />
     </div>
   </Layout>
 )
 
-
-export const query = graphql `
+export const query = graphql`
 query {
-  site {
-    siteMetadata {
-      github
-      linkedin
-      twitter
-    }
-  }
-  allMarkdownRemark {
+  allMarkdownRemark(sort: {fields: frontmatter___date, order: DESC}) {
     edges {
       node {
         frontmatter {
-          tag
           date(fromNow: true)
-          idealist
+          summaryPoints
+          tag
           title
         }
       }
     }
   }
-}`
+}
+`

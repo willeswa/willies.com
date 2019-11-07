@@ -4,6 +4,10 @@
   padding: 10px 20px;
 }
 
+*{
+  box-sizing: border-box;
+}
+
 .container {
   margin: 0 auto;
   padding: 0 auto;
@@ -11,10 +15,8 @@
 }
 
 header {
-  width: 100%;
-  background-color: #E7E4E1;
+  background-color: #e7e4e1;
   padding: 15px 0 0px 0;
-  margin-bottom: 2%;
 }
 
 .navbar {
@@ -27,16 +29,16 @@ header {
   font-weight: bold;
 }
 
+
 .cards {
-  width: 90%;
-  margin: 0 15%;
+  column-count: 2;
 }
 
 .card {
-  width: 40%;
-  border-radius: 0 0 20px 20px;
-  margin: 1%;
   display: inline-block;
+  margin-bottom: 4%;
+  width: 100%;
+  border-radius: 0 0 20px 20px;
   -webkit-box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 1);
   -moz-box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 1);
   box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 1);
@@ -49,70 +51,85 @@ header {
 
 .lowerCard {
   padding: 10px 15px;
-  width: 100%;
   background-color: #f7f7f7;
   border-radius: 0 0 15px 15px;
   display: flex;
-      flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .thought {
-  width: 47%;
+  width: 32%;
   border: #313a6a dashed 1px;
-  margin: 1%;
-  font-size: 0.8em;
-  font-weight: 300;
+  margin: 2px;
+  font-size: 0.7em;
+  font-weight: normal;
   padding: 5px;
   border-radius: 15px 0 15px 0;
 }
 
-.postTags span {
-    color: #D9DADD;
-    font-size: 0.7em;
-    font-weight: bold;
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: normal;
+.cardTags {
+  display: flex;
 }
 
-.postTags span:last-child {
-  float: right;
+.cardTags :last-child {
+  margin-left: 67%;
 }
 
-.cardsHolder p {
-    color: #4E69B9;
-    padding: 30px;
+.cardTags span {
+  color: #d9dadd;
+  font-size: 0.7em;
+  font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+  font-weight: normal;
+}
+
+.cardsHolder p{
+  color: #4e69b9;
+  padding: 30px;
 }
 
 .button {
-    padding: 5px 10px;
-    font-size: 0.8em;
-    margin-left: 80%;
-    cursor: pointer;
-    text-transform: uppercase;;
-    border: none;
+  padding: 5px 10px;
+  font-size: 0.8em;
+  margin-left: 86%;
+  cursor: pointer;
+  text-transform: capitalize;
+  border: none;
+  border: #313a6a 1px solid;
 }
 
+.back {
+  font-size: 0.8em;
+  float: right;
+  border: #313a6a 1px solid;
+  padding: 5px 10px;
+}
 
 footer {
-    padding: 10px 55px;
-    font-size: 0.8em;
-    font-style: italic;
-    opacity: 0.5;
+  padding: 10px 55px;
+  font-size: 0.8em;
+  font-style: italic;
+  opacity: 0.5;
 }
-footer *{
-    font-weight: 100;
+footer * {
+  font-weight: 100;
 }
 footer p {
-    margin-top: 2%;
-    color: #999999;
-    text-align: center;
+  margin-top: 2%;
+  color: #999999;
+  text-align: center;
 }
 
 @media only screen and (max-width: 600px) {
-    * {
-        margin: 0;
-        padding: 0;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .back {
+    margin-right: 2%;
+  }
+
   .container {
     width: 100%;
     padding: 0;
@@ -120,30 +137,33 @@ footer p {
   }
 
   .cards {
-      width: 100%;
-      margin: 0;
+    width: 100%;
+    margin: 0;
+    column-count: 1;
   }
 
   .button {
-      margin-left: 68%;
-      margin-top: 5%;
+    margin-left: 67%;
   }
 
   .card {
-      width: 96%;
-      margin: 2%;
+    width: 96%;
+    margin: 2%;
+  }
+
+  .cardTags :last-child {
+    margin-left: 65%;
   }
 
   .thought {
-      font-size: 0.6em;
-      font-weight: bold;
-      width: 31%;
-      height: 50px;
-      margin: 1%;
+    font-size: 0.6em;
+    font-weight: bold;
+    width: 31%;
+    margin: 1%;
   }
 
-  footer p{
-      padding: 0;
-      margin-top: 20%;
+  footer p {
+    padding: 0;
+    margin-top: 20%;
   }
 }
