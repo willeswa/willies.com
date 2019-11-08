@@ -14,7 +14,7 @@ export default ({ data }) => (
       <div className={layout.cards}>
         {data.allMarkdownRemark.edges.slice(0, 4).map(({ node }, index) => (
           <div className={layout.column}>
-            <Card key={index} card={node.frontmatter} />
+            <Card key={index} card={node.frontmatter} link={node.fields.slug}/>
           </div>
         ))}
       </div>
@@ -34,6 +34,9 @@ query {
           tag
           title
         }
+      fields {
+        slug
+      }
       }
     }
   }

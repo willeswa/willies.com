@@ -3,8 +3,8 @@ import layout from "./layout.module.css"
 
 const Thought = ({ text }) => <p className={layout.thought}>{text}</p>
 
-export default ({ card }) => (
-  <a href={card.link} className={layout.card}>
+export default ({ card, link }) => (
+  <a href={link} className={layout.card}>
     <div className={layout.upperCard}>
       <h4>{card.title}</h4>
       <div className={layout.cardTags}>

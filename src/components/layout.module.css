@@ -105,6 +105,45 @@ header {
   padding: 5px 10px;
 }
 
+.blogPost {
+  width: 60%;
+  margin: 0 auto;
+  padding: 2% 3%;
+  margin-top: 5%;
+  font-size: 0.9em;
+  background-color: #F8F8F8;
+  border-radius: 0 50px 0 50px;
+  -webkit-box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 1);
+}
+
+.blogPost p {
+  color: #403F3E;
+  font-weight: 500;
+  line-height: 2em;
+}
+
+.blogPost h3 {
+  width: 80%;
+  display: flex;
+}
+
+.postTitle {
+  width: 96%;
+}
+
+
+.backPost {
+  font-size: 0.8em;
+  text-align: right;
+  margin-left: 3%;
+}
+
+.blogPost h5 {
+  color: #918471;
+}
+
 footer {
   padding: 10px 55px;
   font-size: 0.8em;
