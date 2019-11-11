@@ -11,13 +11,13 @@ export default ({ data }) => (
       <h4 className={pagecss.postsHeader}>
         <span>All Posts</span>
         <span className={layout.back}>
-          <a href="/"> &lt;&lt; Go Back</a>
+          <a href="/"> &lt;&lt; Home</a>
         </span>
       </h4>
       <div className={layout.cards}>
         {data.allMarkdownRemark.edges.map(({ node }, index) => (
           <div className={layout.column}>
-            <Card key={index} card={node.frontmatter} />
+            <Card key={index} card={node.frontmatter} link={node.fields.slug} />
           </div>
         ))}
       </div>
@@ -27,17 +27,20 @@ export default ({ data }) => (
 
 export const query = graphql`
   query {
-    allMarkdownRemark {
-      edges {
-        node {
-          frontmatter {
-            tag
-            date(fromNow: true)
-            summaryPoints
-            title
-          }
+   allMarkdownRemark {
+    edges {
+      node {
+        frontmatter {
+          date(fromNow: true)
+          summaryPoints
+          tag
+          title
         }
+      fields {
+        slug
+      }
       }
     }
   }
+}
 `
