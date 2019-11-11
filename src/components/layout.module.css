@@ -71,7 +71,7 @@ header {
 }
 
 .cardTags :last-child {
-  margin-left: 67%;
+  margin-left: 64%;
 }
 
 .cardTags span {
@@ -213,7 +213,7 @@ footer p {
   }
 
   .cardTags :last-child {
-    margin-left: 65%;
+    margin-left:53%;
   }
 
   .thought {
