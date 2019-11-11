@@ -18,6 +18,7 @@ export default ({ data }) => {
           </a>
         </h3>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <span className={layout.postTag}> #{post.frontmatter.tag}</span>
       </div>
     </Layout>
   )
@@ -29,6 +30,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        tag
       }
     }
   }

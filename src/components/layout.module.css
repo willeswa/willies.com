@@ -87,21 +87,17 @@ header {
   padding: 30px;
 }
 
-.button {
-  padding: 10px 10px;
-  font-size: 0.8em;
-  margin-left: 86%;
-  cursor: pointer;
-  text-transform: capitalize;
-  border: none;
-  border: #313a6a 1px solid;
-}
 
 .back {
   font-size: 0.8em;
   float: right;
+  padding: 5px;
   border: #313a6a 1px solid;
-  padding: 5px 10px;
+
+}
+
+.back a {
+  padding: 10px;
 }
 
 .blogPost {
@@ -162,6 +158,12 @@ header {
 .blogPost h5 {
   color: #918471;
   padding: 0 3%;
+}
+
+.postTag {
+
+  font-size: 0.8em;
+  padding: 4%;
 }
 
 footer {
