@@ -10,10 +10,10 @@ summaryPoints:
 tag: "tutorial"
 ---
 
-Many modern applications with a data layer will require to filter and limit requests by roles. The system to achieve such a functionality is called an `authentication system`. An authentication system consists of two processes: `authentication` and `authorization`. The former being tied to identification and the latter to accessibility.
+Most modern applications with a data layer will need to filter and limit requests by roles. To achieve this kind of cunctionality, an `authentication system` is required. In a nutshell, an authentication system consists of two processes: `authentication` and `authorization`. The former being tied to identification and the latter to accessibility.
 Here is a concise explanation on their differences <a href="https://auth0.com/docs/authorization/concepts/authz-and-authn">Authentication vs Authorization</a>.
 
-In this article, we learn how to implement a Token based authentication system in a Django API using the combined power of DRF and Django. This tutorial will not explain the basics of <a>setting up a django application</a> and will assume that you have already installed <a>the Python interpreter</a> on your Linux machine.
+In this article, we learn how to implement a Token based authentication system in a Django API using the combined power of DRF and Django. This tutorial will not explain the basics of <a href="https://www.django-rest-framework.org/tutorial/quickstart/">setting up a django application</a> and will assume that you have already installed <a href="https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-ubuntu-18-04-quickstart">the Python interpreter</a> on your Linux machine.
 
 #### Step-1: Application Setup
 
@@ -30,9 +30,11 @@ monkpad:~/Desktop/ed$ source venv/bin/activate
 
 <br/>
 
-At this point, you should have your project setup and an application called <strong>authentication</strong> in the root directory. You maybe tempted to run `migrations`, don't. More on this in a moment.
+At this point, you should have your project setup and an application called <strong>authentication</strong> in the root directory. You may be tempted to run `migrations`, don't. More on this in a moment.
 
-To make DRF work, we need to do a couple more setups. First, open your project and add `rest_framework` and `rest_framework.authtoken` in your list of `INSTALLED_APPS` located in the `settings.py` module. Secondly, configure the <a href="https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication">TokenAuthentication</a> by adding the following block of code in your `settings.py`:
+To make DRF work, we need to do a couple more setups. First, open your project and add `rest_framework` and `rest_framework.authtoken` in your list of `INSTALLED_APPS` located in the `settings.py` module. Secondly, configure a <a href="https://www.django-rest-framework.org/api-guide/authentication/#tokenauthentication">TokenAuthentication</a> backend. 
+
+Go a head and add the following block of code in your `settings.py`:
 
 ```py
 INSTALLED_APPS = [
@@ -56,13 +58,13 @@ REST_FRAMEWORK = {
 
 <br/>
 
-That is it with the setup. Let us move on to the next step.
+With that, we have our setup in place. Let us move on to the next step.
 
 #### Step-2: Create a Custom User Manager
 
 Before creating a custom user model, we need to create a custom user <a href="https://docs.djangoproject.com/en/3.0/topics/db/managers/">manager</a>. Our yet to be created user model will have a phonenumber field which is an addition to the other fields inherited from AbstractUser class. For such a custom user model, Django <a href="https://docs.djangoproject.com/en/3.0/topics/auth/customizing/#writing-a-manager-for-a-custom-user-model">recommends</a> a custom user manager.
 
-We begin by creating a method to create a user using email and phonenumber as opposed to username only. In the `models.py` module, add the following code to get started.
+We begin by creating a method to create a user using an email and a phonenumber as opposed to a username only. In the `models.py` module, add the following code to get started.
 
 ```py
 from django.db import models
@@ -178,7 +180,7 @@ AUTH_USER_MODEL = 'authentication.User'
 ...
 ```
 
-Finally, we can run our `migrations`. Speaking of migrations. Remember when I told you not run migrations at first? Well, it is is because it is <a href="https://docs.djangoproject.com/en/3.0/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project">recommended</a> to point your `AUTH_USER_MODEL` to the custom User model before running your initial migrations.
+Finally, we can run our `migrations`. Speaking of migrations. Remember when I told you not run migrations at first? Well, it is because it is <a href="https://docs.djangoproject.com/en/3.0/topics/auth/customizing/#using-a-custom-user-model-when-starting-a-project">recommended</a> to point your `AUTH_USER_MODEL` to the custom User model before running your initial migrations.
 
 If you are looking to customize the User model mid project, you should look at this <a href="https://docs.djangoproject.com/en/3.0/topics/auth/customizing/#changing-to-a-custom-user-model-mid-project">section of the documentation</a>. 
 
@@ -239,13 +241,13 @@ urlpatterns = [
 ```
 Now if you power up your server and navigate to `127.0.0.1:8000/api/signup`, you should be able to see a form for creating a new user. Go ahead and create one.
 
-Everything seems good except one near invisible problem. If you access the `authentication.user` table of your database (<em>you can use <a href="https://sqliteonline.com/">sqliteonline.com</a></em>), you will notice that your password is in plain text. This is a grave security issue. Also, when we try to login, the passwords may not match.
+Everything seems good except one near invisible problem. If you access the `authentication.user` table of your database (<em>you can use <a href="https://sqliteonline.com/">sqliteonline.com</a>), you will notice that your password is in plain text. This is a grave security issue. Also, when we try to login, the passwords may not match.
 
 Let's fix that.
 
-DRF provides us with the power to perfom before and after effect on instances before they are saved in the database through the `perfom_create` method. We will override this method inorder to hash password.
+DRF provides us with the power to perfom before and after effects on instances before they are saved in the database through the `perfom_create` method. We will override this method in order to hash the password before saving the user.
 
-In your `views.py` module, inside the UserSignupView, enter the following code:
+In the `views.py` module, inside the UserSignupView, add the following code:
 
 ```py
 
@@ -264,13 +266,13 @@ class UserSingupView(generics.CreateAPIView):
             serializer.validated_data['password'] = _pass
             return super().perform_create(serializer)
 ```
-Now create another user and check the `authentication.user` table again. You will notice that the new user's password is hashed.
+Now, create another user and check the `authentication.user` table again. You will notice that the new user's password is hashed.
 
 We are making progress. We can now signup into our Django API. Let's now implement login to make the cycle complete.
 
 ###### 2. Login
 
-The login serializer is quite similar to the signup serializer with the only diference being the nuber of fields to dislay to the user.
+The login serializer is quite similar to the signup serializer with the only diference being the number of fields to dislay to the user.
 
 To define the login serializer, add the following code to the `serializers.py` module:
 
@@ -293,9 +295,9 @@ class LoginSerializer(serializers.ModelSerializer):
         #finally, password should not be read
         extra_kwargs = {'password': {'write_only': True}}
 ```
-We then need to add a view for loggin. This is where the magic lies. We will start by overriding the `createAPIView`'s`post` method. This will allow us to perform cusom checks and customize the error messages for the user. We will then use Django's `login` method to record some of our user's attributes such as `last_login`.
+We then need to add a view for loggin. This is where the magic lies. We start by overriding the `createAPIView`'s`post` method. This allows us to perform cusom checks and customize the error messages for the user. We will then use Django's `login` method to track some of our user's attributes such as `last_login`.
 
-Let's dive in. In your `views.py` module, add the following code:
+Let's dive in. In the `views.py` module, add the following block of code:
 
 ```py
 
@@ -352,7 +354,7 @@ class LoginView(generics.CreateAPIView):
 ```
 Note that Django User model provides the <a href="https://docs.djangoproject.com/en/3.0/ref/contrib/auth/#django.contrib.auth.models.User.check_password"> `user.check_password`</a> method for checking plain text password against hashed passwords.
 
-Finally, add the routing to the login page. In the `urls.py` module of the authentication app, add the following code:
+Finally, add the login route. In the `urls.py` module of the authentication app, add the following block of code:
 
 ```py
 ...
@@ -443,4 +445,4 @@ We are done. You will now recieve a token everytime you login. You notice that t
 
 This is the biggest shortcoming of the DRF Token Authentication. 
 
-That is why there exists other production level options including OAuth Toolkit and SimpleJWT. Nonetheless, their implementation follows a similar path. This tutorial may not be exhausitive but I hope it has laid down a template for authentication implementation in your next Django Based API.
+That is why there exists other production level options including <a href="https://django-oauth-toolkit.readthedocs.io/en/latest/">OAuth Toolkit</a> and <a href="https://github.com/SimpleJWT/django-rest-framework-simplejwt">SimpleJWT</a>. Nonetheless, their implementation follows a similar path. This tutorial may not be exhausitive but I hope it has laid down a template for authentication implementation in your next Django Based API.
