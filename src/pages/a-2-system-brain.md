@@ -1,6 +1,6 @@
 ---
 title: "Explaining the two-system brain from a client-server perspective"
-date: "2019-11-11 12:00" 
+date: "2019-11-11" 
 summaryPoints: ["The 2-system brain is explained in the book Thinking, Fast and Slow", "The brain has two modes; the automatic & low-effort lazy", "The automatic mode is responsible for effortless actions", "The low-effort lazy mode is responsible for effortful attention-intensive tasks", "The automatic mode can be likened to the client", "The low-effort mode can be likened to the server"]
 tag: "perspective"
 ---

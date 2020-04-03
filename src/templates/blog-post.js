@@ -9,10 +9,9 @@ export default ({ data }) => {
     <Layout>
       <div className={layout.blogPost}>
         <h3>
-          {" "}
           <span className={layout.postTitle}>
             {post.frontmatter.title}
-          </span>{" "}
+          </span>
           <a href="/blogs/" className={layout.backPost}>
             <span>All <br/> Posts</span>
           </a>

@@ -9,9 +9,9 @@ export default ({ data }) => (
   <Layout>
     <div className={layout.container}>
       <h4 className={pagecss.postsHeader}>
-        <span>All Posts</span>
+        <span>See All Posts</span>
         <span className={layout.back}>
-          <a href="/"> &lt;&lt; Home</a>
+          <a href="/"> &lt;&lt; Go Home</a>
         </span>
       </h4>
       <div className={layout.cards}>

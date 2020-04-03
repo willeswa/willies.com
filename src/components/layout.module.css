@@ -36,6 +36,7 @@ header {
 .card {
   display: inline-block;
   margin-bottom: 4%;
+  text-decoration: none;
   width: 100%;
   border-radius: 0 0 20px 20px;
   -webkit-box-shadow: 0px 0px 5px -3px rgba(0, 0, 0, 1);
@@ -92,12 +93,19 @@ header {
   font-size: 0.8em;
   float: right;
   padding: 5px;
-  border: #313a6a 1px solid;
+  /* border: #313a6a 1px solid; */
 
 }
 
 .back a {
   padding: 10px;
+  text-decoration: none;
+
+}
+
+.back a:hover{
+  color: #3486EA;
+  text-decoration: underline;
 }
 
 .blogPost {
@@ -156,9 +164,25 @@ header {
   vertical-align: middle;
 }
 
-.blogPost h5 {
-  color: #918471;
+.blogPost h4 {
+  color: #000;
   padding: 0 3%;
+}
+
+
+.blogPost h6{
+  color: #3486EA;
+  padding: 0 3%;
+}
+
+.blogPost h3 a {
+  text-decoration: none;
+}
+
+.blogPost a {
+  text-decoration: underline;
+  font-weight: normal;
+  color: #3486EA;
 }
 
 .postTag {
@@ -182,7 +206,7 @@ footer p {
   text-align: center;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1000px) {
   * {
     margin: 0;
     padding: 0;
@@ -232,6 +256,8 @@ footer p {
   .blogPost {
     width: 96%;
     font-size: 0.8em;
+  /* height: 20px !important; */
+
   }
 
   .blogPost h3 {

@@ -3,7 +3,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import layout from "./layout.module.css"
 import pagecss from "../pages/pages.module.css"
 
+
 export default ({ children }) => {
+
   const data = useStaticQuery(
     graphql`
       query {

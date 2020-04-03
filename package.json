@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "gatsby-halima",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "minamalist-for-readers",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -13,26 +13,29 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "babel-plugin-prismjs": "^2.0.1",
+    "babel-preset-gatsby": "^0.3.1",
     "gatsby": "^2.17.6",
     "gatsby-plugin-manifest": "^2.2.26",
     "gatsby-plugin-offline": "^3.0.17",
     "gatsby-plugin-react-helmet": "^3.1.13",
     "gatsby-plugin-typography": "^2.3.15",
+    "gatsby-remark-prismjs": "^3.4.1",
     "gatsby-source-filesystem": "^2.1.35",
-    "gatsby-transformer-remark": "^2.6.32",
+    "gatsby-transformer-remark": "^2.7.1",
+    "prismjs": "^1.19.0",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
     "react-typography": "^0.16.19",
-    "typography": "^0.16.19",
-    "typography-theme-fairy-gates": "^0.16.19"
+    "typography": "^0.16.19"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/willeswa/willies.com.git"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
