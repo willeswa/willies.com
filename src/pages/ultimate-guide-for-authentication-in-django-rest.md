@@ -10,7 +10,7 @@ summaryPoints:
 tag: "tutorial"
 ---
 
-Most modern applications with a data layer will need to filter and limit requests by roles. To achieve this kind of cunctionality, an `authentication system` is required. In a nutshell, an authentication system consists of two processes: `authentication` and `authorization`. The former being tied to identification and the latter to accessibility.
+Most modern applications with a data layer will need to filter and limit accessibility. To achieve this kind of functionality, an `authentication system` is required. In a nutshell, an authentication system consists of two processes: `authentication` and `authorization`. The former being tied to identification and the latter to accessibility.
 Here is a concise explanation on their differences <a href="https://auth0.com/docs/authorization/concepts/authz-and-authn">Authentication vs Authorization</a>.
 
 In this article, we learn how to implement a Token based authentication system in a Django API using the combined power of DRF and Django. This tutorial will not explain the basics of <a href="https://www.django-rest-framework.org/tutorial/quickstart/">setting up a django application</a> and will assume that you have already installed <a href="https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-programming-environment-on-ubuntu-18-04-quickstart">the Python interpreter</a> on your Linux machine.
@@ -241,7 +241,7 @@ urlpatterns = [
 ```
 Now if you power up your server and navigate to `127.0.0.1:8000/api/signup`, you should be able to see a form for creating a new user. Go ahead and create one.
 
-Everything seems good except one near invisible problem. If you access the `authentication.user` table of your database (<em>you can use <a href="https://sqliteonline.com/">sqliteonline.com</a>), you will notice that your password is in plain text. This is a grave security issue. Also, when we try to login, the passwords may not match.
+Everything seems good except one near invisible problem. If you access the `authentication.user` table of your database (you can use <a href="https://sqliteonline.com/">sqliteonline.com</a>), you will notice that your password is in plain text. This is a grave security issue. Also, when we try to login, the passwords may not match.
 
 Let's fix that.
 
@@ -441,6 +441,7 @@ class LoginView(generics.CreateAPIView):
         except Exception as error:
             raise exceptions.AuthenticationFailed({'error': error})
 ```
+
 We are done. You will now recieve a token everytime you login. You notice that this Token Authentication is <a href="https://www.geeksforgeeks.org/difference-between-stateless-and-stateful-protocol/">stateful</a> and tokens are stored in the database. This is why we have to delete a token before we generate a new one.
 
 This is the biggest shortcoming of the DRF Token Authentication. 
