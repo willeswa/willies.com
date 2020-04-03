@@ -270,3 +270,177 @@ We are making progress. We can now signup into our Django API. Let's now impleme
 
 ###### 2. Login
 
+The login serializer is quite similar to the signup serializer with the only diference being the nuber of fields to dislay to the user.
+
+To define the login serializer, add the following code to the `serializers.py` module:
+
+```py
+...
+#existing code
+...
+
+class LoginSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = User
+
+        # on signup we return all the user attributes
+        fields = ['first_name', 'last_name', 'phonenumber', 'email', 'password']
+
+        # we set all fields except email and password to readonly
+        read_only_fields = ['first_name', 'last_name', 'phonenumber']
+
+        #finally, password should not be read
+        extra_kwargs = {'password': {'write_only': True}}
+```
+We then need to add a view for loggin. This is where the magic lies. We will start by overriding the `createAPIView`'s`post` method. This will allow us to perform cusom checks and customize the error messages for the user. We will then use Django's `login` method to record some of our user's attributes such as `last_login`.
+
+Let's dive in. In your `views.py` module, add the following code:
+
+```py
+
+...
+#existing imports
+...
+from django.contrib.auth import login
+
+...
+#existing code
+...
+class LoginView(generics.CreateAPIView):
+    permission_classes = (permissions.AllowAny,)
+    queryset = User.objects.all()
+    serializer_class = LoginSerializer
+
+    #override the post method to customize error messages
+    def post(self, request, *args, **kwargs):
+        email = request.data.get('email')
+        password = request.data.get('password')
+
+        #first try...except block checks for empty email and password fields
+        try:
+            if not email:
+                raise Exception('Email cannot be blank!')
+            if not password:
+                raise Exception('Password cannot be blank!')
+        except Exception as error:
+            raise exceptions.AuthenticationFailed({'error': error})
+
+        #second try...except block ensures a user with such email exists
+        try:
+            user = User.objects.get(email=email)
+        except Exception as error:
+            raise exceptions.AuthenticationFailed(
+                {'error': 'Invalid Email or Password!'})
+
+        #last try...except block checks that password is correct
+        try:
+            if user and user.check_password(password):
+
+                #we use django's login method to login
+                login(request, user)
+
+                serializer = LoginSerializer(user)
+
+                return response.Response(
+                    data={'message': 'Success!', 'user': serializer.data}, status=200)
+
+            raise Exception('Invalid Email or Password!')
+
+        except Exception as error:
+            raise exceptions.AuthenticationFailed({'error': error})
+```
+Note that Django User model provides the <a href="https://docs.djangoproject.com/en/3.0/ref/contrib/auth/#django.contrib.auth.models.User.check_password"> `user.check_password`</a> method for checking plain text password against hashed passwords.
+
+Finally, add the routing to the login page. In the `urls.py` module of the authentication app, add the following code:
+
+```py
+...
+#exisiting imports
+...
+from .views import UserSignupView, LoginView
+
+urlpatterns = [
+    ...
+    #exisiting coe
+    ...
+    path('login', LoginView.as_view())
+]
+
+```
+Now if you navigate to `/login` and login using the email and password you used to signup, your request will be processed successfuly. Now the icing on the cake, generate Tokens.
+
+#### Step-5: Generate Tokens
+
+We first serialize the data returned by the token. In your `seriazliers.py`, add the followin block of code:
+
+```py
+...
+#existing imports
+...
+from rest_framework.authtoken.models import Token
+
+
+class TokenSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Token
+        fields = '__all__'
+```
+Then in your `views.py`, we generate the token in the `LoginView` class:
+
+```py
+...
+#existing imports
+...
+from .serializers import UserSerializer, LoginSerializer, TokenSerializer
+from rest_framework.authtoken.models import Token
+
+class LoginView(generics.CreateAPIView):
+    ...
+    #existing code
+    ...
+
+    def post(self, request, *args, **kwargs):
+        ...
+        #existing code
+        ...
+
+        try:
+            if user and user.check_password(password):
+
+                ...
+                #existing code
+                ...
+
+                #we wrap the Token generation in the try...except block for conditional tokens generation
+                try:
+                    token = Token.objects.get(user=user)
+
+                    #if a token for specific user already exists
+                    #delete it and create a new one
+                    token.delete()
+                    new_token = Token.objects.create(user=user)
+
+                except Exception:
+                    new_token = Token.objects.create(user=user)
+
+                #serialize the token data
+                token_serializer = TokenSerializer(new_token)
+
+                return response.Response(
+                    data={
+                        'message': 'Success!', 
+                        'user': serializer.data, 
+                        'token': token_serializer.data}, 
+                    status=200)
+
+            raise Exception('Invalid Email or Password!')
+
+        except Exception as error:
+            raise exceptions.AuthenticationFailed({'error': error})
+```
+We are done. You will now recieve a token everytime you login. You notice that this Token Authentication is <a href="https://www.geeksforgeeks.org/difference-between-stateless-and-stateful-protocol/">stateful</a> and tokens are stored in the database. This is why we have to delete a token before we generate a new one.
+
+This is the biggest shortcoming of the DRF Token Authentication. 
+
+That is why there exists other production level options including OAuth Toolkit and SimpleJWT. Nonetheless, their implementation follows a similar path. This tutorial may not be exhausitive but I hope it has laid down a template for authentication implementation in your next Django Based API.
